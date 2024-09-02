@@ -1,1 +1,36 @@
-<h1>Hello World!</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Puppy's food planner</title>
+  <!-- CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="style/food-planner.css">
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="js/food-planner.js"></script>
+</head>
+<body>
+  <div class="row text-center left-menu-padding">
+    <div class="col-3 card left-menu left-menu-bordercolor no-padding-horizontal">
+      <div class="card-header no-border"> DISH LIST </div>
+      <div class="card-header input-group p-1 no-border"> 
+        <input type="text" id="dish-input" class="form-control dish-input left-menu-bordercolor" aria-label="Amount (to the nearest dollar)" placeholder="Enter a dish" onkeypress="addDishInput(event)">
+        <button class="input-group-text  dish-input plus-button left-menu-bordercolor" onclick="addDishButton()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+          </svg>
+        </button>
+      </div>
+      <div id="dish-container" class="card-body text-start p-2"> 
+        <!-- Where the dish are added -->
+      </div>
+      <div id="dish-counter" class="card-footer no-border text-end left-menu-footer"> Count: 0</div>
+    </div>
+
+    <div class="col-9">
+      3/4
+    </div>
+  </div>
+</body>
+</html> 
