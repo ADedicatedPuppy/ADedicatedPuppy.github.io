@@ -7,15 +7,13 @@ let dishInput, dishContainer, counterElement;
 let counter = 0;
 
 const addDishInput = (event) => {
-  if(event.key == "Enter") {
+  if(event.key == "Enter")
     addDishButton();
-  }
-}
+};
 
 const addDishButton = () => {
-  if (dishInput.value) {
+  if (dishInput.value)
     addDish(dishInput.value);
-  }
 
   dishInput.value = '';
 };
