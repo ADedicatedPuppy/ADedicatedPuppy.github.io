@@ -1,31 +1,30 @@
-//TODO: Rename dish -> recipe 
 //TODO: Error handling instead of console.warn()
 //TODO: Confirmation popup when importing over something unsaved
 window.onload = () => {
-  dishInput = document.getElementById('dish-input');
-  dishContainer = document.getElementById('dish-container');
-  counterElement = document.getElementById('dish-counter');
+  recipeInput = document.getElementById('recipe-input');
+  recipeContainer = document.getElementById('recipe-container');
+  counterElement = document.getElementById('recipe-counter');
 };
-let dishInput, dishContainer, counterElement;
-let dishList = [];
+let recipeInput, recipeContainer, counterElement;
+let recipeList = [];
 
 const reader = new FileReader();
 
-/* Adding a dish by pressing enter in the input */
-const addDishInput = (event) => {
+/* Adding a recipe by pressing enter in the input */
+const addRecipeInput = (event) => {
   if(event.key == 'Enter')
-    addDishButton();
+    addRecipeButton();
 };
 
-/* Adding a dish by clicking the Add button next to the input */
-const addDishButton = () => {
-  if (dishInput.value)
-    addDish(dishInput.value);
+/* Adding a recipe by clicking the Add button next to the input */
+const addRecipeButton = () => {
+  if (recipeInput.value)
+    addRecipe(recipeInput.value);
   
-  dishInput.value = '';
+  recipeInput.value = '';
 };
 
-/* Importing a list of dishs */
+/* Importing a list of recipes */
 const importJson = (event) => {
   const file = event.target.files[0];
   
@@ -37,12 +36,12 @@ const importJson = (event) => {
 
 reader.onload = (event) => {
   try {
-    const importedDishList = JSON.parse(event.target.result);
-    removeAllDishes();
+    const importedRecipeList = JSON.parse(event.target.result);
+    removeAllRecipes();
 
-    importedDishList.forEach((dish) => {
-      if (dish.name && dish.id) 
-        addDish(dish.name, dish.id);
+    importedRecipeList.forEach((recipe) => {
+      if (recipe.name && recipe.id) 
+        addRecipe(recipe.name, recipe.id);
       else 
         console.warn('Invalid JSON Data');
     });
@@ -51,9 +50,9 @@ reader.onload = (event) => {
   }
 };
 
-/* Exporting a list of dishs */
-function exportJSON(filename = 'dish-list.json') {
-  const jsonStr = JSON.stringify(dishList, null, 2);
+/* Exporting a list of recipes */
+function exportJSON(filename = 'recipe-list.json') {
+  const jsonStr = JSON.stringify(recipeList, null, 2);
   const blob = new Blob([jsonStr], { type: "application/json" });
   
   // Creates a <a> element with the link
@@ -67,31 +66,31 @@ function exportJSON(filename = 'dish-list.json') {
   document.body.removeChild(link);
 }
 
-// Dish List CRUD
-const addDish = (dishName, dishID = crypto.randomUUID()) => {
+// Recipe List CRUD
+const addRecipe = (recipeName, recipeID = crypto.randomUUID()) => {
   let div = document.createElement('div');
-  div.className = 'card dish-card p-2 m-1';
-  div.innerText = dishName;
-  div.id = dishID;
-  dishList.push({
-    id: dishID,
-    name: dishName
+  div.className = 'card recipe-card p-2 m-1';
+  div.innerText = recipeName;
+  div.id = recipeID;
+  recipeList.push({
+    id: recipeID,
+    name: recipeName
   });
   
-  dishContainer.appendChild(div);
+  recipeContainer.appendChild(div);
   
-  counterElement.innerText = `Count: ${dishList.length}`;
+  counterElement.innerText = `Count: ${recipeList.length}`;
 };
 
-const removeDish = (dishID) => {
-  const index = dishList.findIndex((dish) => dish.id === dishID);
+const removeRecipe = (recipeID) => {
+  const index = recipeList.findIndex((recipe) => recipe.id === recipeID);
   if(index > -1)
-    dishList.splice(index, 1);
+    recipeList.splice(index, 1);
   
-  dishContainer.removeChild(document.getElementById(dishID));
+  recipeContainer.removeChild(document.getElementById(recipeID));
 }
 
-const removeAllDishes = () => {
-  dishList = [];
-  dishContainer.innerHTML = '';
+const removeAllRecipes = () => {
+  recipeList = [];
+  recipeContainer.innerHTML = '';
 }

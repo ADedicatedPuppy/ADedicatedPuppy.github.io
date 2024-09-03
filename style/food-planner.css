@@ -39,12 +39,12 @@ button:active {
 .no-border {
   border: 0;
 }
-.dish-input {
+.recipe-input {
   background-color: #18181b;
   color: #efefef;
   transition: background-color 0.5s;
 }
-.dish-input:hover {
+.recipe-input:hover {
   background-color: #222227;
 }
 .plus-button {
@@ -66,8 +66,8 @@ button:active {
   background-color: #222227;
 }
 
-/* Container for all the cards containing dishes */
-#dish-container {
+/* Container for all the cards containing recipees */
+#recipe-container {
   background-color: #18181b;
   color: #efefef;
   overflow-y: scroll;
@@ -75,18 +75,18 @@ button:active {
   scrollbar-color: #a3a3a3 rgba(0, 0, 0, 0) !important;
   scrollbar-width: thin;
 }
-/* Card containing the Dish's name */
-.dish-card {
+/* Card containing the Recipe's name */
+.recipe-card {
   width: 100%;
   background-color: #222227;
   color: #efefef;
 }
-#dish-counter {
+#recipe-counter {
   font-style: italic;
   font-size: 0.8rem;
 }
 /* Custom File Input Button*/
-#import-dish-list {
+#import-recipe-list {
   opacity: 0;
   position: absolute;
   z-index: -1;

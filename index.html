@@ -13,29 +13,29 @@
 <body>
   <div class="row text-center left-menu-padding">
     <div class="col-3 card left-menu left-menu-bordercolor no-padding-horizontal">
-      <div class="card-header no-border"> DISH LIST </div>
+      <div class="card-header no-border"> RECIPE LIST </div>
       <div class="card-header input-group p-1 no-border"> 
-        <input type="text" id="dish-input" class="form-control dish-input left-menu-bordercolor" aria-label="Amount (to the nearest dollar)" placeholder="Enter a dish" onkeypress="addDishInput(event)">
-        <button class="input-group-text  dish-input plus-button left-menu-bordercolor" onclick="addDishButton()">
+        <input type="text" id="recipe-input" class="form-control recipe-input left-menu-bordercolor" aria-label="Amount (to the nearest dollar)" placeholder="Enter a recipe" onkeypress="addRecipeInput(event)">
+        <button class="input-group-text  recipe-input plus-button left-menu-bordercolor" onclick="addRecipeButton()">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
           </svg>
         </button>
       </div>
-      <div id="dish-container" class="card-body text-start p-2"> 
-        <!-- Where the dish are added -->
+      <div id="recipe-container" class="card-body text-start p-2"> 
+        <!-- Where the recipe are added -->
       </div>
       <div class="row card-footer no-border left-menu-footer">
         <div class="col-2 p-1">
           <button class="text-button">
-            <label for="import-dish-list"> Import </label>
-            <input type="file" id="import-dish-list" onchange="importJson(event)"> 
+            <label for="import-recipe-list"> Import </label>
+            <input type="file" id="import-recipe-list" onchange="importJson(event)"> 
           </button>
         </div>
         <div class="col-2 p-1">
           <button class="text-button" onclick="exportJSON()"> Export </button>
         </div>
-        <div id="dish-counter" class="col text-end"> Count: 0</div>
+        <div id="recipe-counter" class="col text-end"> Count: 0</div>
       </div>
     </div>
 
