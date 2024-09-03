@@ -25,7 +25,18 @@
       <div id="dish-container" class="card-body text-start p-2"> 
         <!-- Where the dish are added -->
       </div>
-      <div id="dish-counter" class="card-footer no-border text-end left-menu-footer"> Count: 0</div>
+      <div class="row card-footer no-border left-menu-footer">
+        <div class="col-2 p-1">
+          <button class="text-button">
+            <label for="import-dish-list"> Import </label>
+            <input type="file" id="import-dish-list" onchange="importJson(event)"> 
+          </button>
+        </div>
+        <div class="col-2 p-1">
+          <button class="text-button" onclick="exportJSON()"> Export </button>
+        </div>
+        <div id="dish-counter" class="col text-end"> Count: 0</div>
+      </div>
     </div>
 
     <div class="col-9">

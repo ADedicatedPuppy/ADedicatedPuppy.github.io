@@ -1,76 +1,93 @@
 html {
-    height: 100%;
-    overflow: hidden;
+  height: 100%;
+  overflow: hidden;
 }
 body {
-    background-color: #0e0e10;
-    color: #efefef;
-
+  background-color: #0e0e10;
+  color: #efefef;
 }
 *::placeholder {
-    color: #a3a3a3 !important;
+  color: #a3a3a3 !important;
 }
-input:focus{
-    outline: 2px solid rgb(193, 134, 201) !important;
-    background-color: #222227 !important;
-    color: #efefef !important;
+input:focus {
+  outline: 2px solid rgb(193, 134, 201) !important;
+  background-color: #222227 !important;
+  color: #efefef !important;
 }
-
-button:active{
-    background-color: rgb(193, 134, 201) !important;
-    transition: background-color 0s;
+/* Button clicking */
+button:active {
+  background-color: rgb(193, 134, 201) !important;
+  transition: background-color 0s;
 }
-
 
 .left-menu {
-    background-color: #18181b;
-    color: #efefef;
-    height: 98.5vh;
+  background-color: #18181b;
+  color: #efefef;
+  height: 98.5vh;
 }
 .left-menu-padding {
-    padding-top: 0.5vh;
-    padding-left: 1vw;
+  padding-top: 0.5vh;
+  padding-left: 1.25vw;
 }
 .left-menu-bordercolor {
-    border-color: #a3a3a3;
+  border-color: #a3a3a3;
 }
 .no-padding-horizontal {
-    padding-left: 0;
-    padding-right: 0;
+  padding-left: 0;
+  padding-right: 0;
 }
 .no-border {
-    border: 0;
-}
-.no-border-radius {
-    border-radius: 0;
+  border: 0;
 }
 .dish-input {
-    background-color: #18181b;
-    color: #efefef;
-    transition: background-color 0.5s;
+  background-color: #18181b;
+  color: #efefef;
+  transition: background-color 0.5s;
 }
-.dish-input:hover{
-    background-color: #222227;
+.dish-input:hover {
+  background-color: #222227;
 }
 .plus-button {
-    padding-left: 6px;
-    padding-right: 6px;
+  padding-left: 6px;
+  padding-right: 6px;
 }
 
-#dish-container{
-    background-color: #18181b;
-    color: #efefef;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    scrollbar-color: #a3a3a3 rgba(0,0,0,0) !important;
-    scrollbar-width: thin;
+/* Import/Export Button */
+.text-button {
+  border-color: transparent;
+  border-radius: 5px;
+  font-size: 0.9rem;
+
+  background-color: #35353b;
+  color: #efefef;
+  transition: background-color 0.5s;
 }
+.text-button:hover {
+  background-color: #222227;
+}
+
+/* Container for all the cards containing dishes */
+#dish-container {
+  background-color: #18181b;
+  color: #efefef;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-color: #a3a3a3 rgba(0, 0, 0, 0) !important;
+  scrollbar-width: thin;
+}
+/* Card containing the Dish's name */
 .dish-card {
-    width: 100%;
-    background-color: #222227;
-    color: #efefef;
+  width: 100%;
+  background-color: #222227;
+  color: #efefef;
 }
-.left-menu-footer {
-    font-style: italic;
-    font-size: 0.8rem;
+#dish-counter {
+  font-style: italic;
+  font-size: 0.8rem;
+}
+/* Custom File Input Button*/
+#import-dish-list {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
 }
