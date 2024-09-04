@@ -11,12 +11,12 @@
   <script type="text/javascript" src="js/food-planner.js"></script>
 </head>
 <body>
-  <div class="row text-center left-menu-padding">
-    <div class="col-3 card left-menu left-menu-bordercolor no-padding-horizontal">
+  <div class="row text-centered left-menu-padding">
+    <div class="col-3 card left-menu bordercolor no-padding-horizontal">
       <div class="card-header no-border"> RECIPE LIST </div>
       <div class="card-header input-group p-1 no-border"> 
-        <input type="text" id="recipe-input" class="form-control recipe-input left-menu-bordercolor" aria-label="Amount (to the nearest dollar)" placeholder="Enter a recipe" onkeypress="addRecipeInput(event)">
-        <button class="input-group-text  recipe-input plus-button left-menu-bordercolor" onclick="addRecipeButton()">
+        <input type="text" id="recipe-input" class="form-control recipe-input bordercolor" aria-label="Amount (to the nearest dollar)" placeholder="Enter a recipe" onkeypress="addRecipeInput(event)">
+        <button class="input-group-text  recipe-input plus-button bordercolor" onclick="addRecipeButton()">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
           </svg>
@@ -38,9 +38,15 @@
         <div id="recipe-counter" class="col text-end"> Count: 0</div>
       </div>
     </div>
-
-    <div class="col-9">
-      3/4
+    
+    <div class="col-9 position-relative">
+        <div class="card roulette-card  bordercolor centered">
+          <button id="recipe-picker" class="roulette-button centered" onclick="rollForRecipe(event)"> 
+            <h2>Pick a recipe for me!</h2> 
+          </button>
+          <h2 id="picked-recipe" class="centered hidden"> </h2>
+        </div>
+      </div>
     </div>
   </div>
 </body>

@@ -1,5 +1,8 @@
 //TODO: Error handling instead of console.warn()
 //TODO: Confirmation popup when importing over something unsaved
+//TODO: A way to reset? Or a way to reroll
+//TODO: Game feel of the roulette (Animations)
+//TODO: Chose multiple meals at the same time (weekly/daily)
 window.onload = () => {
   recipeInput = document.getElementById('recipe-input');
   recipeContainer = document.getElementById('recipe-container');
@@ -51,7 +54,7 @@ reader.onload = (event) => {
 };
 
 /* Exporting a list of recipes */
-function exportJSON(filename = 'recipe-list.json') {
+const exportJSON = (filename = 'recipe-list.json') => {
   const jsonStr = JSON.stringify(recipeList, null, 2);
   const blob = new Blob([jsonStr], { type: "application/json" });
   
@@ -64,6 +67,15 @@ function exportJSON(filename = 'recipe-list.json') {
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
+}
+
+/* Picking a random recipe */
+const rollForRecipe = (event) =>{
+  document.getElementById("recipe-picker").classList.add('hidden');
+  const resultElement = document.getElementById("picked-recipe");
+  resultElement.classList.remove('hidden');
+  // Gets a random name from the recipe list
+  resultElement.innerText = recipeList[Math.floor(Math.random() * recipeList.length)].name;
 }
 
 /* Recipe List CRUD */

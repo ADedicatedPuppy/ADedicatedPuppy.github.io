@@ -29,7 +29,7 @@ button:active {
   padding-top: 0.5vh;
   padding-left: 1.25vw;
 }
-.left-menu-bordercolor {
+.bordercolor {
   border-color: #a3a3a3;
 }
 .no-padding-horizontal {
@@ -90,4 +90,40 @@ button:active {
   opacity: 0;
   position: absolute;
   z-index: -1;
+}
+
+/* Roulette */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.roulette-card {
+  width: 95%;
+  height: 25%;
+  margin-left: -0.5%;
+  
+  background-color: #222227;
+  color: #efefef;
+}
+
+.roulette-button {
+  width: 50%;
+
+  border-color: white;
+  border-radius: 10px;
+  border-style: solid;
+
+  background-color: #35353b;
+  color: #efefef;
+}
+
+.roulette-button:hover {
+  background-color: #222227;
+}
+
+.hidden {
+  display: none;
 }
