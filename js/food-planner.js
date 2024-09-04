@@ -66,7 +66,7 @@ function exportJSON(filename = 'recipe-list.json') {
   document.body.removeChild(link);
 }
 
-// Recipe List CRUD
+/* Recipe List CRUD */
 const addRecipe = (recipeName, recipeID = crypto.randomUUID()) => {
   let div = document.createElement('div');
   div.className = 'card recipe-card p-2 m-1';
