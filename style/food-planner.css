@@ -119,11 +119,49 @@ button:active {
   background-color: #35353b;
   color: #efefef;
 }
-
 .roulette-button:hover {
   background-color: #222227;
 }
 
+/* Roulette content */
+.roulette-recipes {
+  text-overflow: ellipsis;
+}
+
+.roulette-recipes-secondary-color {
+  color: #bdbdbd;
+} 
+
+.roulette-recipes-tertiary-color {
+  color: #8a8a8a;
+}
+
+/* Roulette Reroll/Result */
+#roulette-result {
+  width: 95%;
+  border-color: white;
+  border-radius: 10px;
+  border-style: dashed;
+
+  background-color: #222227;
+  color: #efefef;
+}
+
+.top-centered-40 {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.top-centered-75 {
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Hide stuff */
 .hidden {
   display: none;
 }
