@@ -165,3 +165,40 @@ button:active {
 .hidden {
   display: none;
 }
+
+
+/* Error card */
+.fade-out {
+  opacity: 0;
+}
+
+.fade-in {
+  transition: opacity 0s !important;
+  opacity: 1;
+}
+
+#error-card {
+  position: fixed;
+  bottom: 2.5%;
+  right: 2.5%;
+  width: 20%;
+  height: 20%;
+
+  background-color: #222227;
+  color: #efefef;
+  border-radius: 10px;
+  border-style: solid;
+  font-weight: bold;
+
+  transition: opacity 5s;
+}
+
+#error-card-title{
+  background-color: #35353b;
+}
+
+.error-border-color {
+  border-color: rgb(255, 78, 78);
+  border-width: 2px;
+}
+

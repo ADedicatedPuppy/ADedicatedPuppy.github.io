@@ -1,6 +1,4 @@
-//TODO: Error handling instead of console.warn()
 //TODO: Confirmation popup when importing over something unsaved
-//TODO: Stop the user from clicking when list empty
 //TODO: Chose multiple meals at the same time (weekly/daily)
 /* Contants */ 
 const ANIMATION_DURATION = 2500; // in ms
@@ -9,20 +7,19 @@ const TIME_BETWEEN_FRAMES = 1000 / TARGET_ANIMATION_FRAMERATE; //in ms
 const DELAY_BETWEEN_ANIMATION_AND_RESULTS = 1000; // in ms
 
 /* Initialization */
-window.onload = () => {
-  recipeInput = document.getElementById('recipe-input');
-  recipeContainer = document.getElementById('recipe-container');
-  counterElement = document.getElementById('recipe-counter');
-
-  for (let i = 0; i < 5; i++)
-    rouletteElements.push(document.getElementById(`roulette-recipe-${i}`));
-};
-let recipeInput, recipeContainer, counterElement, recipeRoulette;
+let recipeRoulette, fadeTimeout;
 let rouletteElements = [];
 
 let recipeList = [];
 
 const reader = new FileReader();
+
+const recipeInput = document.getElementById('recipe-input');
+const recipeContainer = document.getElementById('recipe-container');
+const counterElement = document.getElementById('recipe-counter');
+
+for (let i = 0; i < 5; i++)
+  rouletteElements.push(document.getElementById(`roulette-recipe-${i}`));
 
 /* Adding a recipe by pressing enter in the input */
 const addRecipeInput = (event) => {
@@ -45,7 +42,7 @@ const importJson = (event) => {
   if (file && file.type === 'application/json')
     reader.readAsText(file); // This calls reader.onload(event)
   else
-    console.warn('File must be a .json');
+    displayError('Invalid file format', 'The application only supports files with the .json extension.');
 };
 
 reader.onload = (event) => {
@@ -57,10 +54,10 @@ reader.onload = (event) => {
       if (recipe.name && recipe.id) 
         addRecipe(recipe.name, recipe.id);
       else 
-        console.warn('Invalid JSON Data');
+      displayError('Invalid file content', 'The JSON data in this file doesn\'t match this application requirements.');
     });
   } catch (error) {
-    console.warn('Unable to parse file content');
+    displayError('Invalid file content', 'The file couldn\'t get parsed as a JSON file, please make sure the content is not corrupted and follows a JSON schema.');
   }
 };
 
@@ -82,6 +79,11 @@ const exportJSON = (filename = 'recipe-list.json') => {
 
 /* Picking a random recipe */
 const rollForRecipe = () => {
+  if (recipeList.length === 0) {
+    displayError('Empty recipe list', 'The recipe list is empty, please add/import recipes before rolling for a recipe.');
+    return;
+  }
+
   document.getElementById('recipe-picker').classList.add('hidden');
   document.getElementById('recipe-roulette-results').classList.add('hidden');
   document.getElementById('recipe-roulette').classList.remove('hidden');
@@ -170,4 +172,4 @@ const shuffle = (array) => {
     [array[currentIndex], array[randomIndex]] = [
       array[randomIndex], array[currentIndex]];
   }
-} 
+}
