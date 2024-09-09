@@ -1,5 +1,6 @@
 //TODO: Error handling instead of console.warn()
 //TODO: Confirmation popup when importing over something unsaved
+//TODO: Stop the user from clicking when list empty
 //TODO: Chose multiple meals at the same time (weekly/daily)
 /* Contants */ 
 const ANIMATION_DURATION = 2500; // in ms
