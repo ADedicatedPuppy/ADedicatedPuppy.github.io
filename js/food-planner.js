@@ -1,5 +1,5 @@
 //TODO: Confirmation popup when importing over something unsaved
-//TODO: Chose multiple meals at the same time (weekly/daily)
+//TODO: Chose multiple meals at the same time (weekly/daily/custom)
 /* Contants */ 
 const ANIMATION_DURATION = 2500; // in ms
 const TARGET_ANIMATION_FRAMERATE = 60; // in fps
@@ -153,23 +153,4 @@ const removeRecipe = (recipeID) => {
 const removeAllRecipes = () => {
   recipeList = [];
   recipeContainer.innerHTML = '';
-}
-
-/* utilities */ 
-
-/* Shuffle an array */
-const shuffle = (array) => {
-  let currentIndex = array.length;
-
-  // While there remain elements to shuffle...
-  while (currentIndex != 0) {
-
-    // Pick a remaining element...
-    const randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
-
-    // And swap it with the current element.
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex], array[currentIndex]];
-  }
 }
