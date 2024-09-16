@@ -102,7 +102,7 @@ button:active {
 
 .roulette-card {
   width: 95%;
-  height: 25%;
+  height: 30%;
   margin-left: -0.5%;
   
   background-color: #222227;
@@ -121,6 +121,24 @@ button:active {
 }
 .roulette-button:hover {
   background-color: #222227;
+}
+/* Roulette Nav menu */
+.nav-link {
+  color: #efefef;
+}
+
+.nav-link:disabled {
+  color: #9d9d9d;
+}
+
+.nav-link:hover {
+  color: #efefef;
+}
+
+.nav-link.active {
+  color: #efefef !important;
+  background-color: #18181b !important;
+  border-bottom: 0;
 }
 
 /* Roulette content */
@@ -160,12 +178,56 @@ button:active {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+/* Week planning */
+.week-recipe {
+  display: flex;
+  overflow: hidden;
+  text-overflow: hidden;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+}
+
+.center-horizontaly {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Weekly roulette Button*/
+.roulette-button.center-horizontaly {
+  margin-top: 0.5%;
+}
+
+@media (min-width: 768px){
+  .seven-cols .col-md-1,
+  .seven-cols .col-sm-1,
+  .seven-cols .col-lg-1  {
+    width: 100%;
+  }
+}
+
+
+@media (min-width: 992px) {
+  .seven-cols .col-md-1,
+  .seven-cols .col-sm-1,
+  .seven-cols .col-lg-1 {
+    width: 14.285714285714285714285714285714%;
+  }
+}
+
+
+@media (min-width: 1200px) {
+  .seven-cols .col-md-1,
+  .seven-cols .col-sm-1,
+  .seven-cols .col-lg-1 {
+    width: 14.285714285714285714285714285714%;
+  }
+}
 
 /* Hide stuff */
 .hidden {
   display: none;
 }
-
 
 /* Error card */
 .fade-out {
@@ -201,4 +263,3 @@ button:active {
   border-color: rgb(255, 78, 78);
   border-width: 2px;
 }
-

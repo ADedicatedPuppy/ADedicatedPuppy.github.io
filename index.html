@@ -39,23 +39,85 @@
     
     <div class="col-9 position-relative">
       <div class="card roulette-card bordercolor centered">
-        <div id="recipe-picker">
-          <button class="roulette-button centered" onclick="rollForRecipe()"> 
-            <h2>Pick a recipe for me!</h2>
-          </button>
-        </div>
-        <div id="recipe-roulette" class="centered text-center w-100 hidden h-100">
-          <h4 id="roulette-recipe-0" class="fst-italic border-bottom roulette-recipes m-0 p-2 roulette-recipes-tertiary-color"></h4>
-          <h4 id="roulette-recipe-1" class="fst-italic border-bottom roulette-recipes m-0 p-2 roulette-recipes-secondary-color"></h4>
-          <h2 id="roulette-recipe-2" class="fw-bold border-bottom roulette-recipes m-0 p-2"></h2>
-          <h4 id="roulette-recipe-3" class="fst-italic border-bottom roulette-recipes m-0 p-2 roulette-recipes-secondary-color"></h4>
-          <h4 id="roulette-recipe-4" class="fst-italic roulette-recipes m-0 p-2 roulette-recipes-tertiary-color"></h4>
-        </div>
-        <div id="recipe-roulette-results" class="centered text-center w-100 h-100 hidden">
-          <h2 id="roulette-result" class="fw-bold p-2 top-centered-40"> Result </h2>
-          <button class="roulette-button top-centered-75" onclick="rollForRecipe()"> 
-            <h2>Pick another recipe for me!</h2>
-          </button>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="single-tab" data-bs-toggle="tab" data-bs-target="#single-tab-pane" type="button" role="tab" aria-controls="single-tab-pane" aria-selected="true">Single</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="daily-tab" data-bs-toggle="tab" data-bs-target="#daily-tab-pane" type="button" role="tab" aria-controls="daily-tab-pane" aria-selected="false" disabled>Daily</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="weekly-tab" data-bs-toggle="tab" data-bs-target="#weekly-tab-pane" type="button" role="tab" aria-controls="weekly-tab-pane" aria-selected="false">Weekly</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="custom-tab" data-bs-toggle="tab" data-bs-target="#custom-tab-pane" type="button" role="tab" aria-controls="custom-tab-pane" aria-selected="false" disabled>Custom</button>
+          </li>
+        </ul>
+        <div class="tab-content h-100" id="myTabContent">
+          <div class="tab-pane fade show active" id="single-tab-pane" role="tabpanel" aria-labelledby="single-tab" tabindex="0">
+            <div id="recipe-picker" class="h-100 w-100">
+              <button class="roulette-button centered" onclick="rollForRecipe()"> 
+                <h2>Pick a recipe for me!</h2>
+              </button>
+            </div>
+            <div id="recipe-roulette" class="text-center w-100 h-100 hidden">
+              <h4 id="roulette-recipe-0" class="fst-italic border-bottom roulette-recipes m-0 p-2 roulette-recipes-tertiary-color"></h4>
+              <h4 id="roulette-recipe-1" class="fst-italic border-bottom roulette-recipes m-0 p-2 roulette-recipes-secondary-color"></h4>
+              <h2 id="roulette-recipe-2" class="fw-bold border-bottom roulette-recipes m-0 p-2"></h2>
+              <h4 id="roulette-recipe-3" class="fst-italic border-bottom roulette-recipes m-0 p-2 roulette-recipes-secondary-color"></h4>
+              <h4 id="roulette-recipe-4" class="fst-italic roulette-recipes m-0 p-2 roulette-recipes-tertiary-color"></h4>
+            </div>
+            <div id="recipe-roulette-results" class="text-center w-100 h-100 hidden">
+              <h2 id="roulette-result" class="fw-bold p-2 top-centered-40"></h2>
+              <button class="roulette-button top-centered-75" onclick="rollForRecipe()"> 
+                <h2>Pick another recipe for me!</h2>
+              </button>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="daily-tab-pane" role="tabpanel" aria-labelledby="daily-tab" tabindex="0">...</div>
+          <div class="tab-pane fade h-100" id="weekly-tab-pane" role="tabpanel" aria-labelledby="weekly-tab" tabindex="0">
+            <div class="row seven-cols text-center p-0 m-0 h-75">
+              <div class="col-md-1 p-1 d-flex flex-column">
+                <div class="border">Monday</div>
+                <div id="week-recipe-0" class="border week-recipe flex-grow-1"></div>  
+                <div id="week-recipe-1" class="border week-recipe flex-grow-1"></div>  
+              </div>
+              <div class="col-md-1 p-1 d-flex flex-column">
+                <div class="border">Tuesday</div>
+                <div id="week-recipe-2" class="border week-recipe flex-grow-1"></div> 
+                <div id="week-recipe-3" class="border week-recipe flex-grow-1"></div> 
+              </div>
+              <div class="col-md-1 p-1 d-flex flex-column">
+                <div class="border">Wednesday</div>
+                <div id="week-recipe-4" class="border week-recipe flex-grow-1"></div>  
+                <div id="week-recipe-5" class="border week-recipe flex-grow-1"></div>  
+              </div>
+              <div class="col-md-1 p-1 d-flex flex-column">
+                <div class="border">Thursday</div>
+                <div id="week-recipe-6" class="border week-recipe flex-grow-1"></div>  
+                <div id="week-recipe-7" class="border week-recipe flex-grow-1"></div>  
+              </div>
+              <div class="col-md-1 p-1 d-flex flex-column">
+                <div class="border">Friday</div>
+                <div id="week-recipe-8" class="border week-recipe flex-grow-1"></div>  
+                <div id="week-recipe-9" class="border week-recipe flex-grow-1"></div>  
+              </div>
+              <div class="col-md-1 p-1 d-flex flex-column">
+                <div class="border">Saturday</div>
+                <div id="week-recipe-10" class="border week-recipe flex-grow-1"></div>  
+                <div id="week-recipe-11" class="border week-recipe flex-grow-1"></div>  
+              </div>
+              <div class="col-md-1 p-1 d-flex flex-column">
+                <div class="border">Sunday</div>
+                <div id="week-recipe-12" class="border week-recipe flex-grow-1"></div>  
+                <div id="week-recipe-13" class="border week-recipe flex-grow-1"></div>  
+              </div>
+            </div>
+            <button id="create-planning-button" class="roulette-button center-horizontaly" onclick="createPlanning()"> 
+              <h3>Make a planning for me!</h3>
+            </button>
+          </div>
+          <div class="tab-pane fade" id="custom-tab-pane" role="tabpanel" aria-labelledby="custom-tab" tabindex="0">...</div>
         </div>
       </div>
     </div>

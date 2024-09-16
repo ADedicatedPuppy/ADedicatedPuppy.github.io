@@ -1,4 +1,3 @@
-//TODO: Confirmation popup when importing over something unsaved
 //TODO: Chose multiple meals at the same time (weekly/daily/custom)
 /* Contants */ 
 const ANIMATION_DURATION = 2500; // in ms
@@ -9,6 +8,7 @@ const DELAY_BETWEEN_ANIMATION_AND_RESULTS = 1000; // in ms
 /* Initialization */
 let recipeRoulette, fadeTimeout;
 let rouletteElements = [];
+let weekRecipeElements = [];
 
 let recipeList = [];
 
@@ -20,6 +20,9 @@ const counterElement = document.getElementById('recipe-counter');
 
 for (let i = 0; i < 5; i++)
   rouletteElements.push(document.getElementById(`roulette-recipe-${i}`));
+
+for (let i = 0; i < 14; i++)
+  weekRecipeElements.push(document.getElementById(`week-recipe-${i}`));
 
 /* Adding a recipe by pressing enter in the input */
 const addRecipeInput = (event) => {
@@ -48,7 +51,6 @@ const importJson = (event) => {
 reader.onload = (event) => {
   try {
     const importedRecipeList = JSON.parse(event.target.result);
-    removeAllRecipes();
 
     importedRecipeList.forEach((recipe) => {
       if (recipe.name && recipe.id) 
@@ -92,7 +94,7 @@ const rollForRecipe = () => {
 
   rollAnimation(0, Math.floor(Math.random() * recipeList.length), shuffledRecipeList);
 
-  setTimeout(() => rollResult(), ANIMATION_DURATION + DELAY_BETWEEN_ANIMATION_AND_RESULTS);
+  setTimeout(() => updateRouletteResult(), ANIMATION_DURATION + DELAY_BETWEEN_ANIMATION_AND_RESULTS);
 }
 
 const rollAnimation = (currentTime, currentRecipeIndex, shuffledRecipeList) => {
@@ -101,7 +103,7 @@ const rollAnimation = (currentTime, currentRecipeIndex, shuffledRecipeList) => {
     rouletteElements[i].innerHTML = shuffledRecipeList[(currentRecipeIndex + i) % shuffledRecipeList.length].name;
 
   // Set when we should call the function next
-  delayUntilNextFrame = TIME_BETWEEN_FRAMES / invertedEaseOutQuad(currentTime / ANIMATION_DURATION) // Only takes value in ]0; ANIMATION_DURATION[
+  delayUntilNextFrame = TIME_BETWEEN_FRAMES / invertedEaseOutQuad(currentTime / ANIMATION_DURATION); // Only takes value in ]0; ANIMATION_DURATION[
 
   // Stop condition: the next call would exceed animation duration
   if(currentTime + delayUntilNextFrame >= ANIMATION_DURATION)
@@ -118,12 +120,25 @@ const invertedEaseOutQuad = (x) => {
   return (1 - x) * (1 - x);
 }
 
-const rollResult = () =>{
+const updateRouletteResult = () => {
   document.getElementById('recipe-roulette').classList.add('hidden');
   document.getElementById('recipe-roulette-results').classList.remove('hidden');
 
   // Copying the result from the middle roulette element <h2> to the roulette's result <h2>
   document.getElementById('roulette-result').innerHTML = rouletteElements[2].innerHTML;
+}
+
+/* Weekly Planning */
+const createPlanning = () => {
+  if (recipeList.length === 0) {
+    displayError('Empty recipe list', 'The recipe list is empty, please add/import recipes before creating a planning.');
+    return;
+  }
+
+  for (let i = 0; i < weekRecipeElements.length; i++)
+    weekRecipeElements[i].innerHTML = recipeList[Math.floor(Math.random() * recipeList.length)].name;
+
+  document.getElementById('create-planning-button').innerHTML = "<h3>Make another planning!</h3>";
 }
 
 /* Recipe List CRUD */
