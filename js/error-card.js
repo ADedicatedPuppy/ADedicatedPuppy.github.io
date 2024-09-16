@@ -1,13 +1,17 @@
 const errorCard = document.getElementById('error-card');
 
+const FADE_OUT_DELAY = 5000; // Delay between apparition and disappearance of an error card (If not hovered)
+const FADE_OUT_AFTER_HOVER_DELAY = 1000; // Delay between mouseleave and disappearance of the error card 
+
 errorCard.addEventListener('mouseover', () => {
-  clearTimeout(fadeTimeout); // Stop the timeout if hovered
-  errorCard.classList.add('fade-in'); // Ensure the div remains visible
+  // Stop the fade-out process
+  clearTimeout(fadeTimeout); 
+  errorCard.classList.add('fade-in');
 });
 
 errorCard.addEventListener('mouseleave', () => {
   // Restart the fade-out process when mouse leaves
-  fadeTimeout = setTimeout(fadeOut, 1000);
+  fadeTimeout = setTimeout(fadeOut, FADE_OUT_AFTER_HOVER_DELAY);
 });
 
 const fadeOut = () => {
@@ -17,7 +21,7 @@ const fadeOut = () => {
   fadeTimeout = setTimeout(() => {
     errorCard.classList.remove('fade-out');
     errorCard.classList.add('hidden');
-  }, 5000);
+  }, FADE_OUT_DELAY);
 }
 
 const displayError = (title, description) => {
@@ -25,5 +29,5 @@ const displayError = (title, description) => {
   errorCard.children[0].innerHTML = `Error: ${title}`;
   errorCard.children[1].innerHTML = description;
 
-  fadeTimeout = setTimeout(fadeOut, 5000);
+  fadeTimeout = setTimeout(fadeOut, FADE_OUT_DELAY);
 }
